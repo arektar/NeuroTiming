@@ -11,17 +11,6 @@ from sklearn.preprocessing import normalize
 
 from sklearn.preprocessing import OneHotEncoder
 
-gpus = tf.config.list_physical_devices('GPU')
-if gpus:
-  # Restrict TensorFlow to only use the first GPU
-  try:
-    tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
-    logical_gpus = tf.config.experimental.list_logical_devices('GPU')
-    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPU")
-  except RuntimeError as e:
-    # Visible devices must be set before GPUs have been initialized
-    print(e)
-
 (X_train, y_train), (X_test, y_test) = cifar100.load_data()
 
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
